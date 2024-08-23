@@ -130,6 +130,7 @@ in
   #  wget
      home-manager
      xorg.xeyes
+     qemu
      lxqt.lxqt-policykit
      (catppuccin-sddm.override {
 	flavor = "mocha";
