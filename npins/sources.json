@@ -1,0 +1,26 @@
+{
+  "pins": {
+    "catppuccin": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "catppuccin",
+        "repo": "nix"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "version": "v1.0.2",
+      "revision": "9345073d27d91ab66c1b6ab65df322906992aa59",
+      "url": "https://api.github.com/repos/catppuccin/nix/tarball/v1.0.2",
+      "hash": "1az91v0gfhspd4pgxg0fgsqhg7sy545rzs41xxrhzw2k8wr85byf"
+    },
+    "nixpkgs": {
+      "type": "Channel",
+      "name": "nixpkgs-unstable",
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-24.11pre660607.c3392ad349a5/nixexprs.tar.xz",
+      "hash": "1g2p74w085252qbxjymrzzccd203bfwxh8sbcyvbzan6bgqfvwi1"
+    }
+  },
+  "version": 3
+}
