@@ -103,12 +103,17 @@ in
   services.blueman.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.alec = {
-    isNormalUser = true;
-    description = "alec";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    packages = with pkgs; [];
-    shell = pkgs.fish;
+  users = {
+    users.alec = {
+      isNormalUser = true;
+      description = "alec";
+      extraGroups = [ "kvm" "networkmanager" "wheel" "libvirtd" "libvirt" ];
+      packages = with pkgs; [];
+      shell = pkgs.fish;
+    };
+    groups = {
+      libvirt = {};
+    };
   };
 
   programs.starship = {
@@ -133,6 +138,7 @@ in
      home-manager
      xorg.xeyes
      opentofu
+     qemu
      lxqt.lxqt-policykit
      (catppuccin-sddm.override {
 	flavor = "mocha";
