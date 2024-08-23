@@ -5,12 +5,14 @@
 { config, pkgs, inputs, ... }:
 let
    sources = import ./npins;
+
 in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./firefox.nix
+      ./virt.nix
       inputs.home-manager.nixosModules.default
       #(sources.catppuccin + "/modules/home-manager")
     ];
@@ -104,7 +106,7 @@ in
   users.users.alec = {
     isNormalUser = true;
     description = "alec";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [];
     shell = pkgs.fish;
   };
@@ -130,7 +132,7 @@ in
   #  wget
      home-manager
      xorg.xeyes
-     qemu
+     opentofu
      lxqt.lxqt-policykit
      (catppuccin-sddm.override {
 	flavor = "mocha";
