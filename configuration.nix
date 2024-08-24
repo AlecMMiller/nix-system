@@ -139,6 +139,7 @@ in
      xorg.xeyes
      opentofu
      qemu
+     cdrtools
      lxqt.lxqt-policykit
      (catppuccin-sddm.override {
 	flavor = "mocha";
