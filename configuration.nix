@@ -137,10 +137,7 @@ in
   #  wget
      home-manager
      xorg.xeyes
-     opentofu
-     ansible
      qemu
-     cdrtools
      lxqt.lxqt-policykit
      (catppuccin-sddm.override {
 	flavor = "mocha";
