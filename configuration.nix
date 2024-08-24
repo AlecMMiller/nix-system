@@ -138,6 +138,7 @@ in
      home-manager
      xorg.xeyes
      opentofu
+     ansible
      qemu
      cdrtools
      lxqt.lxqt-policykit
