@@ -29,6 +29,10 @@ in
     ];
   };
 
+  services.logind.extraConfig = ''
+    HandlePowerKey=ignore
+  '';
+
   programs.thunar.enable = true;
   programs.steam.enable = true;
   networking.hostName = "kami"; # Define your hostname.
