@@ -14,21 +14,10 @@ in
       ./hardware-configuration.nix
       ./firefox.nix
       ./virt.nix
+      ./boot.nix
       inputs.home-manager.nixosModules.default
       #(sources.catppuccin + "/modules/home-manager")
     ];
-
-  # Bootloader.
-  boot = {
-    loader = {
-	systemd-boot.enable = true;
-  	efi.canTouchEfiVariables = true;
-    };
-
-    kernelParams = [
-	"nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-    ];
-  };
 
   services.logind.extraConfig = ''
     HandlePowerKey=ignore
