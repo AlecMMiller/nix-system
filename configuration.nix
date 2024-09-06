@@ -17,6 +17,7 @@ in
       ./users.nix
       ./boot.nix
       ./nix.nix
+      ./security.nix
       inputs.home-manager.nixosModules.default
       #(sources.catppuccin + "/modules/home-manager")
     ];
@@ -40,26 +41,6 @@ in
   # Set your time zone.
   time.timeZone = "America/Phoenix";
 
-
-  security = {
-     rtkit.enable = true;
-     polkit = {
-     	enable = true;
-	extraConfig = ''
-	polkit.addRule(function(action, subject( {
-	   if (
-	      subject.isInGroup("users")
-	      && (
-	         action.id == "org.freedesktop.login1.suspend
-	      )
-	   )
-	   {
-	   return polkit.Result.YES:
-	   }
-	 });
-	'';
-     };
-  };
 
   services.pipewire = {
      enable = true;
