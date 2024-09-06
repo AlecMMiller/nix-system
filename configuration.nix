@@ -15,6 +15,7 @@ in
       ./firefox.nix
       ./virt.nix
       ./boot.nix
+      ./nix.nix
       inputs.home-manager.nixosModules.default
       #(sources.catppuccin + "/modules/home-manager")
     ];
@@ -38,7 +39,6 @@ in
   # Set your time zone.
   time.timeZone = "America/Phoenix";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   security = {
      rtkit.enable = true;
@@ -99,16 +99,6 @@ in
 
   programs.starship = {
       enable = true;
-  };
-
-  # Allow unfree packages
-  nixpkgs.config = {
-    allowUnfree = true;
-    packageOverrides = pkgs: {
-      nur = import(builtins.fetchTarball "https://github.com/nix-community/NUR/archive.master.tar.gz") {
-        inherit pkgs;
-      };
-    };
   };
 
   # List packages installed in system profile. To search, run:
