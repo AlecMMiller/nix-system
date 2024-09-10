@@ -19,12 +19,18 @@ in
       ../../boot.nix
       ../../nix.nix
       ../../security.nix
+      ../../hardware.nix
       inputs.home-manager.nixosModules.default
       #(sources.catppuccin + "/modules/home-manager")
     ];
 
     virt = {
       enable = true;
+    };
+
+    graphics = {
+      enable = true;
+      nvidia = true;
     };
 
     #virt.enabled = true;
@@ -104,22 +110,6 @@ in
   environment.sessionVariables = {
      WLR_NO_HARDWAARE_CURSORS = "1";
      NIXOS_OZONE_WL = "1";
-  };
-
-  hardware = {
-      bluetooth = {
-          enable = true;
-          powerOnBoot = true;
-      };
-      graphics.enable = true;
-      nvidia = {
-         modesetting.enable = true;
-         powerManagement.enable = true;
-         powerManagement.finegrained = false;
-         open = false;
-         nvidiaSettings = true;
-         package = config.boot.kernelPackages.nvidiaPackages.stable;
-      };
   };
 
   system.autoUpgrade = {
