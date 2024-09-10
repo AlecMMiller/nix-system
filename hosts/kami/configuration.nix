@@ -1,23 +1,24 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, inputs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 let
    sources = import ./npins;
 
 in
 {
+  
+  #options.foo.nvidia = lib.mkOption {
+  #    type = lib.types.bool;
+  #};
+
   imports =
     [ # Include the results of the hardware scan.
-      ./i18n.nix
+      ../../i18n.nix
       ./hardware-configuration.nix
-      ./firefox.nix
-      ./virt.nix
-      ./users.nix
-      ./boot.nix
-      ./nix.nix
-      ./security.nix
+      ../../firefox.nix
+      ../../virt.nix
+      ../../users.nix
+      ../../boot.nix
+      ../../nix.nix
+      ../../security.nix
       inputs.home-manager.nixosModules.default
       #(sources.catppuccin + "/modules/home-manager")
     ];
@@ -37,7 +38,7 @@ in
 
   # Enable networking
   networking.networkmanager.enable = true;
-
+  networking.firewall.enable = false;
   # Set your time zone.
   time.timeZone = "America/Phoenix";
 
