@@ -1,16 +1,21 @@
-{ pkgs, ... }:
-
+{ lib, config, pkgs, ... }:
+with lib;
+let
+virt = config.virt;
+in
 {
-  users = {
-    users.alec = {
-      isNormalUser = true;
-      description = "alec";
-      extraGroups = [ "kvm" "networkmanager" "wheel" "libvirtd" "libvirt" ];
-      packages = with pkgs; [];
-      shell = pkgs.fish;
-    };
-    groups = {
-      libvirt = {};
+  config = {
+    users = {
+      users.alec = {
+        isNormalUser = true;
+        description = "alec";
+        extraGroups = [ "networkmanager" "wheel" ] ++ lists.optionals virt.enable [ "kvm" "libvirtd" "libvirt" ];
+        packages = with pkgs; [];
+        shell = pkgs.fish;
+      };
+      groups = {
+        libvirt = {};
+      };
     };
   };
 }

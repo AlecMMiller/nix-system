@@ -1,4 +1,4 @@
-{ lib, config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 let
    sources = import ./npins;
 
@@ -22,6 +22,12 @@ in
       inputs.home-manager.nixosModules.default
       #(sources.catppuccin + "/modules/home-manager")
     ];
+
+    virt = {
+      enable = true;
+    };
+
+    #virt.enabled = true;
 
   services.logind.extraConfig = ''
     HandlePowerKey=ignore

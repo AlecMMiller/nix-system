@@ -1,6 +1,17 @@
-{ pkgs, ... }:
-
+{ lib, pkgs, config, ... }:
+with lib;
+let
+  cfg = config.virt;
+in
 {
+  options.virt = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+    };
+  };
+
+  config = mkIf cfg.enable {
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
@@ -17,4 +28,6 @@
     };
   };
   programs.virt-manager.enable = true;
+
+  };
 }
