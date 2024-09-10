@@ -11,16 +11,9 @@ in
 
   imports =
     [ # Include the results of the hardware scan.
-      ../../i18n.nix
+      ../../manifest.nix
       ./hardware-configuration.nix
-      ../../firefox.nix
-      ../../virt.nix
-      ../../users.nix
-      ../../boot.nix
-      ../../nix.nix
-      ../../security.nix
-      ../../hardware.nix
-      inputs.home-manager.nixosModules.default
+     inputs.home-manager.nixosModules.default
       #(sources.catppuccin + "/modules/home-manager")
     ];
 
@@ -77,11 +70,6 @@ in
 	package = pkgs.kdePackages.sddm;
   };
   services.blueman.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  programs.starship = {
-      enable = true;
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
