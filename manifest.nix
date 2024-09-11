@@ -10,5 +10,6 @@
     ./nix.nix
     ./security.nix
     ./hardware.nix
+    ./networking.nix
   ];
 }
