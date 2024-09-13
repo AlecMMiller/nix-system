@@ -7,7 +7,9 @@ let nvidia = if config.graphics.nvidia then {
   open = false;
   nvidiaSettings = true;
   package = config.boot.kernelPackages.nvidiaPackages.stable;
-} else { };
+} else {
+  open = false;
+};
 in
 {
   options.graphics = {
@@ -17,6 +19,11 @@ in
     };
 
     nvidia = mkOption {
+      type = types.bool;
+      default = false;
+    };
+
+    intel = mkOption {
       type = types.bool;
       default = false;
     };
@@ -33,3 +40,4 @@ in
     };
   };
 }
+
