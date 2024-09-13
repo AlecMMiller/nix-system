@@ -20,7 +20,7 @@ in
   };
 
   services.upower.enable = true;
-
+  services.fprintd.enable = true;
   services.fwupd.enable = true;
 
   services.logind.extraConfig = ''
