@@ -19,6 +19,8 @@ in
     enable = true;
   };
 
+  services.upower.enable = true;
+
   services.fwupd.enable = true;
 
   services.logind.extraConfig = ''
