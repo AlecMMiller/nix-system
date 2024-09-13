@@ -1,6 +1,8 @@
 { ... }:
 
 {
+  programs.dconf.enable = true;
+
   imports = [
     ./i18n.nix
     ./firefox.nix
