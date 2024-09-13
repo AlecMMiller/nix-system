@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ pkgs, lib, config, ... }:
 with lib;
 let nvidia = if config.graphics.nvidia then {
   modesetting.enable = true;
@@ -35,7 +35,10 @@ in
         enable = true;
         powerOnBoot = true;
       };
-      graphics.enable = config.graphics.enable;
+      graphics = {
+        enable = config.graphics.enable; 
+        extraPackages = with pkgs; lists.optionals (!config.graphics.nvidia) [ intel-media-driver intel-vaapi-driver libvdpau-va-gl vpl-gpu-rt ];
+      };
       nvidia = nvidia;
     };
   };
