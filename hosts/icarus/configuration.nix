@@ -65,6 +65,7 @@ in
     home-manager
       xorg.xeyes
       qemu
+      sbctl
       lxqt.lxqt-policykit
       (catppuccin-sddm.override {
        flavor = "mocha";

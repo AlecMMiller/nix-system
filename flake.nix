@@ -3,6 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+    };
     nixos-hardware.url = "github:nixos/nixos-hardware/master"; 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -10,7 +13,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
+  outputs = { self, nixpkgs, home-manager, lanzaboote, ... }@inputs: let
     inherit (self) outputs;
   in {
     nixosConfigurations.kami = nixpkgs.lib.nixosSystem {
@@ -25,8 +28,8 @@
       specialArgs = {inherit inputs;};
       modules = [
         ./hosts/icarus/configuration.nix
+          lanzaboote.nixosModules.lanzaboote
           inputs.home-manager.nixosModules.default
-#nixos-hardware.nixosModules.framework-13th-gen-intel
       ];
     };
 
