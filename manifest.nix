@@ -27,8 +27,6 @@
       agentPKCS11Whitelist = "${pkgs.tpm2-pkcs11}/lib/libtpm2_pkcs11.so.0.0.0";
     };
 
-    environment.etc."whatever".text = "${pkgs.tpm2-pkcs11}";
-
     services.pipewire = {
       enable = true;
       alsa.enable = true;
