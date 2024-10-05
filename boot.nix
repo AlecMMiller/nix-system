@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 {
 
@@ -16,9 +21,15 @@ with lib;
         pkiBundle = "/etc/secureboot";
       };
 
-      kernelParams = lists.optionals config.graphics.intel [ "i915.force_probe=7dd5"] ++ lists.optionals config.graphics.nvidia [
-        "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-      ];
+      kernelParams =
+        lists.optionals config.graphics.intel [
+          "nvme.noacpi=1"
+          "mem_sleep_default=deep"
+          "i915.force_probe=7dd5"
+        ]
+        ++ lists.optionals config.graphics.nvidia [
+          "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+        ];
 
       kernelPackages = pkgs.linuxPackages_latest;
 
