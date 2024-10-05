@@ -10,4 +10,8 @@
 
 to get the public Key
 
-`ssh-keygen -D /run/current-system/sw/lib/libtpm2_pkcs11.so`
+`ssh-keygen -D /run/current-system/sw/lib/libtpm2_pkcs11.so > ~/.ssh/tpm.pub`
+
+to add to the SSH agent
+
+`ssh-add -s /run/current-system/sw/lib/libtpm2_pkcs11.so`
