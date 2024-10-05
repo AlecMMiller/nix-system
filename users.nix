@@ -1,7 +1,12 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 with lib;
 let
-virt = config.virt;
+  virt = config.virt;
 in
 {
   config = {
@@ -9,12 +14,21 @@ in
       users.alec = {
         isNormalUser = true;
         description = "alec";
-        extraGroups = [ "networkmanager" "wheel" ] ++ lists.optionals virt.enable [ "kvm" "libvirtd" "libvirt" ];
-        packages = with pkgs; [];
+        extraGroups =
+          [
+            "tss"
+            "networkmanager"
+            "wheel"
+          ]
+          ++ lists.optionals virt.enable [
+            "kvm"
+            "libvirtd"
+            "libvirt"
+          ];
         shell = pkgs.fish;
       };
       groups = {
-        libvirt = {};
+        libvirt = { };
       };
     };
   };

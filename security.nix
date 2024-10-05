@@ -7,6 +7,7 @@
       enable = true;
       pkcs11.enable = true;
       abrmd.enable = true;
+      tctiEnvironment.enable = true;
     };
     polkit = {
       enable = true;
