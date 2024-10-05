@@ -15,3 +15,15 @@ to get the public Key
 to add to the SSH agent
 
 `ssh-add -s /run/current-system/sw/lib/libtpm2_pkcs11.so`
+
+# TPM2 GPG Key Setup
+
+`gpg --quick-generate-key "Alec Miller <alecmichaelmiller@gmail.com>" rsa2048`
+
+`gpg --edit-key alecmichaelmiller@gmail.com`
+
+`keytotpm`
+
+Ctrl+C out of the GPG CLI
+
+`gpg --armor --export alecmichaelmiller@gmail.com`

@@ -27,6 +27,11 @@
       agentPKCS11Whitelist = "${pkgs.tpm2-pkcs11}/lib/libtpm2_pkcs11.so.0.0.0";
     };
 
+    programs.gnupg.agent = {
+      enable = true;
+      pinentryPackage = pkgs.pinentry-curses;
+    };
+
     services.pipewire = {
       enable = true;
       alsa.enable = true;
