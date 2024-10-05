@@ -51,6 +51,7 @@
         qemu
         sbctl
         unzip
+        tpm2-tools
         brightnessctl
         lxqt.lxqt-policykit
         (catppuccin-sddm.override {
