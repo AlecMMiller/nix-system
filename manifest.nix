@@ -17,6 +17,7 @@
     ./security.nix
     ./hardware.nix
     ./networking.nix
+    ./syncthing.nix
   ];
 
   config = {

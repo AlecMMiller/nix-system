@@ -10,9 +10,5 @@
   # Enable networking
   networking = {
     networkmanager.enable = true;
-
-    extraHosts = ''
-      192.168.1.4 vault.technomancery.com
-    '';
   };
 }
