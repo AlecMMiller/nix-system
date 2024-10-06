@@ -24,6 +24,8 @@
     enable = true;
   };
 
+  host.name = "icarus";
+
   services.tlp.enable = true;
 
   services.power-profiles-daemon.enable = false;
@@ -42,8 +44,6 @@
   services.upower.enable = true;
   services.fprintd.enable = true;
   services.fwupd.enable = true;
-
-  networking.hostName = "icarus"; # Define your hostname.
 
   services.xserver.videoDrivers = [ "modesetting" ];
 

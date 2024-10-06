@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -8,7 +8,12 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking = {
-    networkmanager.enable = true;
+
+  config = {
+
+    networking = {
+      networkmanager.enable = true;
+      hostName = config.host.name;
+    };
   };
 }

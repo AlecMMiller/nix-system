@@ -19,6 +19,8 @@
     nvidia = true;
   };
 
+  host.name = "kami";
+
   services.xserver.videoDrivers = [ "nvidia" ];
 
   system.stateVersion = "24.05"; # Did you read the comment?

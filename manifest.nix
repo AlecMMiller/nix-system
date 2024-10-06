@@ -18,6 +18,7 @@
     ./hardware.nix
     ./networking.nix
     ./syncthing.nix
+    ./hosts.nix
   ];
 
   config = {
