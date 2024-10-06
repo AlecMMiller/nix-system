@@ -10,6 +10,7 @@
     ./i18n.nix
     ./firefox.nix
     ./virt.nix
+    ./firewall.nix
     ./users.nix
     ./boot.nix
     ./nix.nix
