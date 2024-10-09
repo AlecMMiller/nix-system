@@ -102,6 +102,7 @@
         layout = "us";
         variant = "";
       };
+      videoDrivers = ["nvidia"];
     };
 
   };

@@ -6,20 +6,29 @@
 }:
 with lib;
 {
-
+  options.lanzaboote = {
+    enable = mkOption {
+    type = types.bool;
+    default = false;
+    };
+  };
   config = {
-    boot = {
-      bootspec.enable = true;
-      #loader = {
-      #  systemd-boot.enable = true;
-      #  efi.canTouchEfiVariables = true;
-      #};
-
-      loader.systemd-boot.enable = lib.mkForce false;
-      lanzaboote = {
+    boot = mkMerge [
+    (if config.lanzaboote.enable then {
+      loader.systemd-boot.enabke = lib.mkForce false;
+      lanazaboote = {
         enable = true;
-        pkiBundle = "/etc/secureboot";
+        pkiBundle = "etc/secureboot";
       };
+    } else {
+      loader = {
+        systemd-boot.enable = true;
+        efi.canTouchEfiVariables = true;
+      };
+    })
+    {
+      bootspec.enable = true;
+
 
       kernelParams =
         lists.optionals config.graphics.intel [
@@ -34,6 +43,6 @@ with lib;
       kernelPackages = pkgs.linuxPackages_latest;
 
       supportedFilesystems = [ "ntfs" ];
-    };
+    }];
   };
 }

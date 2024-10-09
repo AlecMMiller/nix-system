@@ -24,6 +24,10 @@
     enable = true;
   };
 
+  lanzaboote = {
+    enable = true;
+  };
+
   host.name = "icarus";
 
   services.tlp.enable = true;
