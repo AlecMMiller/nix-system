@@ -10,27 +10,39 @@ with lib;
       settings = {
         devices = {
           "kumo" = {
-            id = "LLGDXIY-JRJ4EEX-LSIVPM7-UWFBEMZ-H6XQKD7-PUMVJAE-X7TBIJM-FJSADAR";
-            address = "tcp://192.168.1.4:22000";
+            id = "DK5JUOS-3BEZ4QW-7F7I4SJ-62U7SGU-CLNK6ZR-ODI4CPH-INOBS2S-DSW5UQ2";
+            addresses = [ "tcp://192.168.1.4:22000" ];
           };
-          "icarus" = mkIf (config.host.name != "icarus") {
+          "icarus" = {
             id = "77KXY3B-722AGF2-7TIQMSM-PIL4IIE-SM2JTEN-F6CZVZZ-IX2KPEQ-EDKVJAO";
+          };
+          "kami" = {
+            id = "ITCI6FM-LZDEGUS-YI5SYS2-YT6NIYJ-EFHMQNB-PCOZVHB-ZE3G7RT-KZ3JWQZ";
+            addresses = [ "tcp://192.168.1.167:22000" ];
           };
         };
         folders = {
           BlenderConfig = {
             path = "/home/alec/.config/blender";
-            devices = [ "kumo" ] ++ optionals (config.host.name != "icarus") [ "icarus" ];
+            devices = [
+              "kumo"
+              "icarus"
+              "kami"
+            ];
           };
           Documents = {
             path = "/home/alec/Documents";
-            devices = [ "kumo" ] ++ optionals (config.host.name != "icarus") [ "icarus" ];
+            devices = [
+              "kumo"
+              "icarus"
+              "kami"
+            ];
           };
         };
         options = {
+          urAccepted = -1;
           globalAnnounceEnabled = false;
           relaysEnabled = false;
-          urAccepted = -1;
         };
       };
       overrideDevices = true;
