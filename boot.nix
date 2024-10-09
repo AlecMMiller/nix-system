@@ -17,10 +17,10 @@ with lib;
       (
         if config.lanzaboote.enable then
           {
-            loader.systemd-boot.enabke = lib.mkForce false;
-            lanazaboote = {
+            loader.systemd-boot.enable = lib.mkForce false;
+            lanzaboote = {
               enable = true;
-              pkiBundle = "etc/secureboot";
+              pkiBundle = "/etc/secureboot";
             };
           }
         else
