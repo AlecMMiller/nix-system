@@ -30,6 +30,14 @@ with lib;
               "kami"
             ];
           };
+          BlenderKpacks = {
+            path = "/home/alec/kpacks";
+            devices = [
+              "kumo"
+              "icarus"
+              "kami"
+            ];
+          };
           Documents = {
             path = "/home/alec/Documents";
             devices = [
