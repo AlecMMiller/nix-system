@@ -18,6 +18,8 @@ with lib;
       };
     };
 
-    users.users."alec".openssh.authorizedKeys.keys = [ ];
+    users.users."alec".openssh.authorizedKeys.keys = [
+      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNnx+rEnx2HMsDL/IL5cVH35eGsVbGfdjRZ26JCGbO+hBg7szkQ4n7XtjoqQVkYJXuoUWrksP0LPY9/neXbLfFE= alec "
+    ];
   };
 }
