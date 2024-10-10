@@ -19,6 +19,7 @@
     ./networking.nix
     ./syncthing.nix
     ./hosts.nix
+    ./ssh.nix
   ];
 
   config = {
@@ -102,7 +103,7 @@
         layout = "us";
         variant = "";
       };
-      videoDrivers = ["nvidia"];
+      videoDrivers = [ "nvidia" ];
     };
 
   };

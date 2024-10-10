@@ -19,6 +19,10 @@
     nvidia = true;
   };
 
+  openssh = {
+    enable = true;
+  };
+
   host.name = "kami";
 
   services.xserver.videoDrivers = [ "nvidia" ];
