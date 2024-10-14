@@ -31,6 +31,11 @@
       agentPKCS11Whitelist = "${pkgs.tpm2-pkcs11}/lib/libtpm2_pkcs11.so.0.0.0";
     };
 
+    programs.neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
+
     programs.gnupg.agent = {
       enable = true;
       pinentryPackage = pkgs.pinentry-curses;
