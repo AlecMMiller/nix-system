@@ -52,18 +52,6 @@
     '';
 
     systemd.services = {
-      tune-usb-autosuspend = {
-        description = "Enable USB autosuspend";
-        wantedBy = [ "multi-user.target" ];
-        serviceConfig = {
-          Type = "oneshot";
-        };
-        unitConfig.RequiresMountsFor = "/sys";
-        script = ''
-          echo 'auto' > '/sys/bus/usb/devices/3-3/power/control'; 
-        '';
-      };
-
       vm-writeback-timeout = {
         description = "Increase writeback timeout";
         wantedBy = [ "multi-user.target" ];
