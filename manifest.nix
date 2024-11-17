@@ -51,6 +51,32 @@
       HandlePowerKey=ignore
     '';
 
+    systemd.services = {
+      tune-usb-autosuspend = {
+        description = "Enable USB autosuspend";
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig = {
+          Type = "oneshot";
+        };
+        unitConfig.RequiresMountsFor = "/sys";
+        script = ''
+          echo 'auto' > '/sys/bus/usb/devices/3-3/power/control'; 
+        '';
+      };
+
+      vm-writeback-timeout = {
+        description = "Increase writeback timeout";
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig = {
+          Type = "oneshot";
+        };
+        unitConfig.RequiresMountsFor = "/sys";
+        script = ''
+          echo '1500' > '/proc/sys/vm/dirty_writeback_centisecs';  
+        '';
+      };
+    };
+
     # Set your time zone.
     time.timeZone = "America/Phoenix";
 
@@ -71,6 +97,7 @@
         sbctl
         unzip
         tpm2-tools
+        powertop
         brightnessctl
         lxqt.lxqt-policykit
         (catppuccin-sddm.override {
