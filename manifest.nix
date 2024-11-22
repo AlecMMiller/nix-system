@@ -72,6 +72,9 @@
       enable = true;
       theme = "catppuccin-mocha";
       package = pkgs.kdePackages.sddm;
+      settings.General = {
+        DefaultSession = "hyprland.desktop";
+      };
     };
     services.blueman.enable = true;
     services.fstrim.enable = true;
@@ -107,7 +110,7 @@
     programs.fish.enable = true;
 
     environment.sessionVariables = {
-      WLR_NO_HARDWAARE_CURSORS = "1";
+      WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
     };
 
@@ -123,7 +126,7 @@
         layout = "us";
         variant = "";
       };
-      videoDrivers = [ "nvidia" ];
+      videoDrivers = [ ] ++ lib.lists.optionals config.graphics.nvidia [ "nvidia" ];
     };
 
   };
