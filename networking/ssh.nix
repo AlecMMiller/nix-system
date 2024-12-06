@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 with lib;
 {
   options.openssh = {
@@ -9,6 +14,11 @@ with lib;
   };
 
   config = {
+    programs.ssh = {
+      startAgent = true;
+      agentPKCS11Whitelist = "${pkgs.tpm2-pkcs11}/lib/libtpm2_pkcs11.so.0.0.0";
+    };
+
     services.openssh = mkIf config.openssh.enable {
       enable = true;
       ports = [ 22 ];

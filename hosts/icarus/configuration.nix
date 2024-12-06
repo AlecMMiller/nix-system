@@ -49,6 +49,8 @@
   services.fprintd.enable = true;
   services.fwupd.enable = true;
 
+  services.blueman.enable = true;
+
   services.xserver.videoDrivers = [ "modesetting" ];
 
   system.stateVersion = "24.05"; # Did you read the comment?

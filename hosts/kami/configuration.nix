@@ -27,5 +27,7 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  services.blueman.enable = true;
+
   system.stateVersion = "24.05"; # Did you read the comment?
 }

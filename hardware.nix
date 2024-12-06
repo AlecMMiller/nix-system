@@ -1,15 +1,25 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 with lib;
-let nvidia = if config.graphics.nvidia then {
-  modesetting.enable = true;
-  powerManagement.enable = true;
-  powerManagement.finegrained = false;
-  open = false;
-  nvidiaSettings = true;
-  package = config.boot.kernelPackages.nvidiaPackages.stable;
-} else {
-  open = false;
-};
+let
+  nvidia =
+    if config.graphics.nvidia then
+      {
+        modesetting.enable = true;
+        powerManagement.enable = true;
+        powerManagement.finegrained = false;
+        open = false;
+        nvidiaSettings = true;
+        package = config.boot.kernelPackages.nvidiaPackages.stable;
+      }
+    else
+      {
+        open = false;
+      };
 in
 {
   options.graphics = {
@@ -29,13 +39,17 @@ in
     };
   };
 
-    config = {
+  config = {
+
+    services.pipewire = mkIf config.graphics.enable {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+    };
 
     nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
-  };
-
-
+      intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+    };
 
     hardware = {
       bluetooth = {
@@ -43,11 +57,17 @@ in
         powerOnBoot = true;
       };
       graphics = {
-        enable = config.graphics.enable; 
-        extraPackages = with pkgs; lists.optionals (!config.graphics.nvidia) [ intel-media-driver intel-vaapi-driver libvdpau-va-gl vpl-gpu-rt ];
+        enable = config.graphics.enable;
+        extraPackages =
+          with pkgs;
+          lists.optionals (!config.graphics.nvidia) [
+            intel-media-driver
+            intel-vaapi-driver
+            libvdpau-va-gl
+            vpl-gpu-rt
+          ];
       };
       nvidia = nvidia;
     };
   };
 }
-
