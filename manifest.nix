@@ -12,12 +12,12 @@ with lib;
     ./apps/firefox.nix
     ./apps/syncthing.nix
     ./apps/virt.nix
+    ./hardware.nix
     ./i18n.nix
-    ./boot.nix
     ./nix.nix
+    ./security/boot.nix
     ./security/security.nix
     ./security/users.nix
-    ./hardware.nix
     ./networking/firewall.nix
     ./networking/hosts.nix
     ./networking/ssh.nix
