@@ -107,6 +107,15 @@
       xwayland.enable = true;
     };
 
+    fonts.packages = with pkgs; [
+      nerd-fonts.fira-code
+      noto-fonts
+      fira-code
+      fira-code-symbols
+      noto-fonts-emoji
+      noto-fonts-cjk-sans
+    ];
+
     programs.fish.enable = true;
 
     environment.sessionVariables = {
