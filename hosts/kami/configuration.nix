@@ -29,5 +29,7 @@
 
   services.blueman.enable = true;
 
+  supportedFilesystems = [ "zfs" ];
+
   system.stateVersion = "24.05"; # Did you read the comment?
 }
