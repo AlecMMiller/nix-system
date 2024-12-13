@@ -21,5 +21,10 @@
     enable = true;
   };
 
+  networking.hostId = "a81c4fe6";
+
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+
   host.name = "kumo";
 }

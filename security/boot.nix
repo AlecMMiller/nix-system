@@ -45,7 +45,7 @@ with lib;
           ];
 
         kernelPackages =
-          if config.graphics.nvidia then pkgs.linuxKernel.packages.linux_6_10 else pkgs.linuxPackages_latest;
+          if config.graphics.nvidia then pkgs.linuxKernel.packages.linux_6_10 else if config.server.enable then pkgs.linuxPackages else pkgs.linuxPackages_latest;
 
         supportedFilesystems = [ "ntfs" ];
       }
