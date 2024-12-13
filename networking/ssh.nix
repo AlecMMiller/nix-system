@@ -21,6 +21,9 @@ with lib;
 
     services.openssh = mkIf config.openssh.enable {
       enable = true;
+      extraConfig = ''
+        AllowAgentForwarding yes
+      '';
       ports = [ 22 ];
       settings = {
         PasswordAuthentication = false;
