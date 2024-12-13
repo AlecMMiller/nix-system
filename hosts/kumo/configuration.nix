@@ -21,5 +21,9 @@
     enable = true;
   };
 
+  lanzaboote = {
+    enable = true;
+  };
+
   host.name = "kumo";
 }

@@ -44,9 +44,9 @@
 
       nixosConfigurations.kumo = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-	#pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
           ./hosts/kumo/configuration.nix
+          lanzaboote.nixosModules.lanzaboote
         ];
       };
 
