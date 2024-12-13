@@ -10,6 +10,7 @@ with lib;
   imports = [
     ./apps/apps.nix
     ./apps/firefox.nix
+    ./apps/k3s.nix
     ./apps/syncthing.nix
     ./apps/virt.nix
     ./hardware.nix
@@ -61,7 +62,7 @@ with lib;
     environment.systemPackages =
       with pkgs;
       [
-      	git
+        git
         sbctl
         unzip
         tpm2-tools
