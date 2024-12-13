@@ -81,6 +81,9 @@ with lib;
       ]
       ++ optionals config.virt.enable [
         qemu
+      ]
+      ++ optionals config.server.enable [
+        zfs
       ];
 
     programs.hyprland = mkIf config.graphics.enable {
