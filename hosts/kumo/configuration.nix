@@ -31,4 +31,6 @@
   boot.zfs.forceImportRoot = false;
 
   host.name = "kumo";
+
+  system.stateVersion = "24.11";
 }
