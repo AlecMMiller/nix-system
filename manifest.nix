@@ -61,6 +61,7 @@ with lib;
     environment.systemPackages =
       with pkgs;
       [
+      	git
         sbctl
         unzip
         tpm2-tools

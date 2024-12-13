@@ -3,7 +3,7 @@
   imports = [
     # Include the results of the hardware scan.
     ../../manifest.nix
-    # ./hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   virt = {
