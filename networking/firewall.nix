@@ -8,7 +8,10 @@ with lib;
   config = {
     networking.firewall = {
       enable = true;
-      allowedTCPPorts = [ 22000 ] ++ lists.optionals config.openssh.enable [ 22 ];
+      allowedTCPPorts =
+        [ 22000 ]
+        ++ lists.optionals config.openssh.enable [ 22 ]
+        ++ lists.optionals config.server.enable [ 6443 ];
       allowedTCPPortRanges = [
         # KDE Connect
         {
