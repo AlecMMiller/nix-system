@@ -11,7 +11,10 @@ with lib;
       allowedTCPPorts =
         [ 22000 ]
         ++ lists.optionals config.openssh.enable [ 22 ]
-        ++ lists.optionals config.server.enable [ 6443 ];
+        ++ lists.optionals config.server.enable [
+          6443
+          8080
+        ];
       allowedTCPPortRanges = [
         # KDE Connect
         {
