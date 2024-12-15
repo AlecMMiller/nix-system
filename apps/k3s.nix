@@ -10,6 +10,9 @@ with lib;
   config = {
     services.k3s = {
       enable = config.server.enable;
+      extraFlags = [
+        "--default-local-storage-path /storage/cluster"
+      ];
     };
   };
 }
