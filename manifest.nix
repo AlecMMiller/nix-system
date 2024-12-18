@@ -59,6 +59,10 @@ with lib;
     };
     services.fstrim.enable = true;
 
+    virtualisation.docker = mkIf config.graphics.enable {
+      enable = true;
+    };
+
     environment.systemPackages =
       with pkgs;
       [
@@ -78,6 +82,8 @@ with lib;
         home-manager
         lxqt.lxqt-policykit
         powertop
+        docker
+        k3d
       ]
       ++ optionals config.virt.enable [
         qemu

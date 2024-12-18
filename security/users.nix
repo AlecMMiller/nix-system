@@ -19,6 +19,7 @@ in
             "tss"
             "networkmanager"
             "wheel"
+            "docker"
           ]
           ++ lists.optionals virt.enable [
             "kvm"
@@ -28,6 +29,7 @@ in
         shell = pkgs.fish;
       };
       groups = {
+        docker = { };
         libvirt = { };
       };
     };
